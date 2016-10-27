@@ -95,7 +95,7 @@ footer .container {
 }
 
 #chord-selector a {
-  flex: 1 1 auto;
+  flex: 0 1 4em;
 
   /* container */
   display: flex;
@@ -124,7 +124,7 @@ footer .container {
 
 #selected-chords {
   /* item */
-  flex: 2 1 0;
+  flex: 0 1 20rem;
   margin-bottom: auto;
   /* container */
   flex-flow: column nowrap;
