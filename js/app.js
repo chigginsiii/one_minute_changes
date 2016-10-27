@@ -61,23 +61,16 @@ var shuffle = function(chords) {
   while (curIndex > 1) {
     curIndex -= 1;
     swapIndex = Math.floor(Math.random() * curIndex);
-
-    console.log('swapping ' + curIndex + ' with ' + swapIndex);
-
     tmp = chords[swapIndex];
     chords[swapIndex] = chords[curIndex];
     chords[curIndex] = tmp;
   }
-  return chords;
 }
 
 var randomPair = function() {
   clearSelections();
   chords = $('#chord-selector a');
   shuffle(chords);
-
-  console.log(chords);
-
   chords[0].click();
   chords[1].click();
 }

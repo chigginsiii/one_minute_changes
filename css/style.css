@@ -35,12 +35,15 @@ header a {
   text-align: center;
 }
 
-header a:hover, header a:active {
+header a:hover {
   color: #000;
   border: 2px #fff solid;
   background-color: #eee;
 }
-
+header a:active {
+  background-color: #222;
+  color: #ffd;
+}
 
 header::after {
   content: '';
@@ -102,7 +105,6 @@ footer .container {
 
   /* style */
   text-decoration: none;
-  text-transform: uppercase;
   font-weight: bold;
 }
 
@@ -110,7 +112,7 @@ footer .container {
   color: #333;
   background-color: #eee;
 }
-#chord-selector a:hover, #chord-selector a:active {
+#chord-selector a:hover {
   color: #444;
 }
 
