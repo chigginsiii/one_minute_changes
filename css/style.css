@@ -25,7 +25,7 @@ header a {
   display: block;
   height: 1em;
   width: 8em;
-  margin: 20px 0 0;
+  margin: 20px 0 0 1rem;
   padding: 0;
   border: 2px #bbb solid;
   border-radius: 8px / 8px;
