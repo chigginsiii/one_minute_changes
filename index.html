@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <!-- local style -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
     <header>
       <div class="container">
         <h2>One Minute Changes</h2>
+        <a id="random-pair">Random Pair</a>
+        <a id="clear-selections">Clear Selections</a>
       </div>
     </header>
 
@@ -22,8 +27,8 @@
 
       <!-- display the currently selected chords -->
       <div id="selected-chords">
-        <div class="selection-0">First Chord</div>
-        <div class="selection-1">Second Chord</div>
+        <div></div>
+        <div></div>
       </div>
     </div>
 
@@ -32,26 +37,6 @@
         &copy;2016 Creighton Higgins
       </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-      $(function(){
-        // A Am A7 B B7 C C7 D Dm D7 E Em E7 E7highD F Fmaj7 G G7
-        var chords = [
-          'A', 'Am', 'A7',
-          'B', 'Bm', 'B7',
-          'C', 'C7',
-          'D', 'Dm', 'D7',
-          'E', 'Em', 'E7', 'E7hD',
-          'F', 'Fm', 'Fmaj7',
-          'G', 'G7'
-        ];
-
-        // setup chord buttons
-        $chordSelector = $('#chord-selector');
-        $.each(chords, function(i, chord_name){
-          $chordSelector.append($('<li>' + chord_name + '</li>'))
-        });
-      });
-    </script>
+    <script src="js/app.js"></script>
   </body>
 </html>

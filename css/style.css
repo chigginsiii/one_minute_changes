@@ -15,6 +15,37 @@ header, footer {
 
 header h2 {
   margin: 20px 0 0;
+  display: inline-block;
+}
+
+header a {
+  float: right;
+  clear: left;
+
+  display: block;
+  height: 1em;
+  width: 8em;
+  margin: 20px 0 0;
+  padding: 0;
+  border: 2px #bbb solid;
+  border-radius: 8px / 8px;
+
+  color: #999;
+  background-color: #ddd;
+  text-align: center;
+}
+
+header a:hover, header a:active {
+  color: #000;
+  border: 2px #fff solid;
+  background-color: #eee;
+}
+
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 footer .container {
@@ -60,32 +91,59 @@ footer .container {
   flex: 1 1 auto;
 }
 
-#chord-selector li {
+#chord-selector a {
   flex: 1 1 auto;
+
   /* container */
   display: flex;
-  background-color: #eee;
   justify-content: center;
   margin: .2rem;
   padding: 1rem 0;
+
+  /* style */
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#chord-selector a, #chord-selector a:visited {
+  color: #333;
+  background-color: #eee;
+}
+#chord-selector a:hover, #chord-selector a:active {
+  color: #444;
+}
+
+#chord-selector a.selected {
+  background-color: #ccf;
 }
 
 /* selected chord display */
 
 #selected-chords {
   /* item */
-  flex: 2 1 auto;
+  flex: 2 1 0;
   margin-bottom: auto;
   /* container */
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
 }
 
 #selected-chords div {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   border-radius: 4px / 4px;
   border: 1px solid #ccc;
+  height: 50%;
+  /* container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+#selected-chords h2 {
+  font-size: 6rem;
+  margin: 0;
+  padding: 0;
+}
 
 
 
