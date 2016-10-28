@@ -132,8 +132,8 @@ var runTimer = function() {
       $startTimer.interval = false;
     }
   } else {
+    $($startTimer).text('Stop');
     $startTimer.interval = setInterval(function(){
-      $($startTimer).text('Stop');
       time--;
       updateTimerDisplay();
       if (time <= 0) {
