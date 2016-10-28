@@ -49,12 +49,14 @@ var toggleChord = function(evt) {
   }
 }
 
+// click handler for #clear-selections
 var clearSelections = function() {
   $('#chord-selector .selected').each(function(){
     $(this).click();
   });
 };
 
+// Click handler randomPair() for #random-pair
 var shuffle = function(chords) {
   var curIndex = chords.length, swapIndex, tmp;
 
@@ -75,8 +77,83 @@ var randomPair = function() {
   chords[1].click();
 }
 
+// click handler and support for GO! button
+var $modal = $('#minute-timer');
+
+var loadTimerChords = function() {
+  $('#chord-display li:nth-child(1)').text( $('#selected-chords div:nth-child(1)').text() );
+  $('#chord-display li:nth-child(2)').text( $('#selected-chords div:nth-child(2)').text() );
+}
+
+var displayTimer = function() {
+  loadTimerChords();
+  resetTimer();
+  $modal.removeClass('hidden').addClass('modal');
+}
+
+var hideTimer = function() {
+  $modal.removeClass('modal').addClass('hidden');
+}
+
+var timerHidden = function() {
+  return $modal.hasClass('hidden');
+}
+
+
+
+// click handler for start button
+var timeInt;
+var time;
+var $timerDisplay = $('#timer');
+
+// running the timer: display time, count, update display
+var updateTimerDisplay = function(content) {
+  var time_remaining = ':' + ('0' + time).slice(-2);
+  $timerDisplay.text(time_remaining);
+};
+
+var $startTimer = $('#timer-start')[0];
+
+var resetTimer = function() {
+  clearInterval( $startTimer.interval );
+  $startTimer.interval = false;
+  $($startTimer).text('Start');
+  resetTimeRemaining();
+  updateTimerDisplay();
+}
+
+var runTimer = function() {
+  if ( $startTimer.interval != false ) { 
+    if ($startTimer.interval === 'complete') {
+      resetTimer();
+    } else {
+      clearInterval($startTimer.interval);
+      $($startTimer).text('Start');
+      $startTimer.interval = false;
+    }
+  } else {
+    $startTimer.interval = setInterval(function(){
+      $($startTimer).text('Stop');
+      time--;
+      updateTimerDisplay();
+      if (time <= 0) {
+        clearInterval( $startTimer.interval );
+        $($startTimer).text('Complete');
+        $startTimer.interval = 'complete';
+      }
+    }, 1000);
+  }
+}
+
+var resetTimeRemaining = function() {
+  time = 60;
+}
+
+//
+// READY!
+//
 $(function(){
-  // A Am A7 B B7 C C7 D Dm D7 E Em E7 E7highD F Fmaj7 G G7
+
   var chords = [
     'A', 'Am', 'A7',
     'B', 'Bm', 'B7',
@@ -108,4 +185,20 @@ $(function(){
   // setup random button
   $randomButton = $('#random-pair');
   $randomButton.click(randomPair);
+
+  // setup GO button
+  $goButton = $('#display-timer');
+  $goButton.click(displayTimer);
+
+  // setup Close button
+  $closeButton = $('.close');
+  $closeButton.click(hideTimer);
+
+  // setup start button
+  $startButton = $('#timer-start');
+  $startButton.click(runTimer);
+
+  // setup reset button
+  $resetButton = $('#timer-reset');
+  $resetButton.click(resetTimer);
 });
