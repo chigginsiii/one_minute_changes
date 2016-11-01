@@ -109,6 +109,7 @@ var timeInt;
 var time;
 var $timerDisplay = $('#timer');
 var $piano = $('#piano');
+var timeToPlay = 60;
 
 // running the timer: display time, count, update display
 var updateTimerDisplay = function() {
@@ -127,7 +128,7 @@ var resetTimer = function() {
 }
 
 var resetTimeRemaining = function() {
-  time = 2;
+  time = timeToPlay;
 }
 
 var startCountdown = function() {
