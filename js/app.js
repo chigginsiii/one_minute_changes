@@ -99,15 +99,19 @@ var timerHidden = function() {
   return $modal.hasClass('hidden');
 }
 
+var timerDone = function() {
+  $('#piano')[0].play()
+}
 
 
 // click handler for start button
 var timeInt;
 var time;
 var $timerDisplay = $('#timer');
+var $piano = $('#piano');
 
 // running the timer: display time, count, update display
-var updateTimerDisplay = function(content) {
+var updateTimerDisplay = function() {
   var time_remaining = ':' + ('0' + time).slice(-2);
   $timerDisplay.text(time_remaining);
 };
@@ -122,6 +126,43 @@ var resetTimer = function() {
   updateTimerDisplay();
 }
 
+var resetTimeRemaining = function() {
+  time = 2;
+}
+
+var startCountdown = function() {
+  var cd_t = 3;
+  $startTimer.interval = setInterval(function() {
+    $timerDisplay.addClass("red");
+    if (cd_t > 0) {
+      $timerDisplay.text(':0' + cd_t);
+      cd_t--;
+    } else {
+      clearInterval( $startTimer.interval );
+      $timerDisplay.removeClass("red");
+      $timerDisplay.text('Go!');
+      startCountUp();
+    }
+  }, 1000);
+}
+
+var startCountUp = function() {
+    $startTimer.interval = setInterval(function(){
+      // tic tic...
+      time--;
+      updateTimerDisplay();
+
+      if (time <= 0) {
+        clearInterval( $startTimer.interval );
+
+        timerDone();
+        $($startTimer).text('Complete');
+        $startTimer.interval = 'complete';
+
+      }
+    }, 1000);
+}
+
 var runTimer = function() {
   if ( $startTimer.interval != false ) { 
     if ($startTimer.interval === 'complete') {
@@ -133,20 +174,8 @@ var runTimer = function() {
     }
   } else {
     $($startTimer).text('Stop');
-    $startTimer.interval = setInterval(function(){
-      time--;
-      updateTimerDisplay();
-      if (time <= 0) {
-        clearInterval( $startTimer.interval );
-        $($startTimer).text('Complete');
-        $startTimer.interval = 'complete';
-      }
-    }, 1000);
+    startCountdown();
   }
-}
-
-var resetTimeRemaining = function() {
-  time = 60;
 }
 
 //
