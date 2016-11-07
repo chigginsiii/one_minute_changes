@@ -34,6 +34,7 @@ var flash_no_select = function($chord) {
 
 // click handler for chord buttons
 var toggleChord = function(evt) {
+  evt.preventDefault();
   var $chord = $(this);
   if ($chord.hasClass('selected')) {
     $chord.removeClass('selected');
@@ -69,7 +70,8 @@ var shuffle = function(chords) {
   }
 }
 
-var randomPair = function() {
+var randomPair = function(e) {
+  e.preventDefault();
   clearSelections();
   chords = $('#chord-selector a');
   shuffle(chords);

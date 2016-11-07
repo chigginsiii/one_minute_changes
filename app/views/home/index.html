@@ -1,0 +1,49 @@
+    <header>
+      <div class="container">
+        <h2>One Minute Changes</h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <nav>
+        <a id="random-pair">Random Pair</a>
+        <a id="clear-selections">Clear Selections</a>
+        <a id="display-timer">GO!</a>
+      </nav>
+    </div>
+
+    <div id="content" class="container">
+      <!-- display the chords -->
+      <ul id="chord-selector"></ul>
+
+      <!-- display the currently selected chords -->
+      <div id="selected-chords">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div id="minute-timer" class="hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <ul id="chord-display">
+            <li></li>
+            <li></li>
+            <li id="timer"></li>
+          </ul>
+          <a class="button" id="timer-start">Start</a>
+          <a class="button" id="timer-reset">Reset</a>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container text-muted">
+        &copy;2016 Creighton Higgins
+      </div>
+    </footer>
+    <audio src="<%= audio_path('piano.wav') %>" id="piano" autostart="false">
