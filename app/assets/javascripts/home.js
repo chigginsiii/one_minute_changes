@@ -26,6 +26,7 @@ $(function(){
 
   // feedback: can't select this button
   var flash_no_select = function($chord) {
+    console.log('FLASH NO SELECT!')
     var oldBG = $chord.css('background-color');
     $chord.animate({
       backgroundColor: "#fcc"

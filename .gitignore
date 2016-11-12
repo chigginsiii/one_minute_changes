@@ -11,3 +11,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# emacs
+*~
+\#*
+
+# mac
+.DS_Store
