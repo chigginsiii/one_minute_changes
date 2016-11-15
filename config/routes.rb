@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'home#index'
 
+  devise_for :users, controllers: { registrations: "registrations" }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
